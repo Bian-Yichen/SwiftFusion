@@ -140,12 +140,9 @@ function renderGallery() {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "scene-card";
+    button.setAttribute("aria-label", `Open ${scene.title} result`);
     button.innerHTML = `
-      <img src="${fullAsset(scene, "ours")}" alt="${scene.title}" loading="lazy" />
-      <span class="scene-card-text">
-        <span class="scene-card-title">${scene.title}</span>
-        <span class="scene-card-action">View details →</span>
-      </span>
+      <img src="${fullAsset(scene, "ours")}" alt="" loading="lazy" />
     `;
     button.addEventListener("click", () => openScene(scene, button));
     fragment.appendChild(button);
