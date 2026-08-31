@@ -1,5 +1,22 @@
-# SwiftFusion
+# SwiftFusion Project Page
 
-Official repository for **SwiftFusion: Towards Motion-Robust and Efficient 4K HDR Fusion**.
+Static project page for:
 
-The project website is maintained on the `webpage` branch.
+**SwiftFusion: Towards Motion-Robust and Efficient 4K HDR Fusion**
+
+## Structure
+
+- `index.html`: page content
+- `static/css/index.css`: styles
+- `static/js/index.js`: visual-comparison interaction
+- `static/images/`: project assets
+
+The site is intentionally build-free and can be served directly by GitHub Pages.
+
+## Local preview
+
+```bash
+python3 -m http.server 8000
+```
+
+Then open `http://localhost:8000`.
