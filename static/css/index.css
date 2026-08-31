@@ -201,14 +201,14 @@ h2 {
 
 .scene-gallery:hover .scene-card,
 .scene-gallery:focus-within .scene-card {
-  flex-grow: 0.72;
-  opacity: 0.72;
+  flex-grow: 0.38;
+  opacity: 0.64;
 }
 
 .scene-gallery .scene-card:hover,
 .scene-gallery .scene-card:focus-visible {
   z-index: 1;
-  flex-grow: 4.8;
+  flex-grow: 12;
   opacity: 1;
   outline: none;
 }
