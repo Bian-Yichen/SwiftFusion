@@ -115,42 +115,12 @@
 
       <section class="section comparison-section" id="comparison">
         <div class="container">
-          <h2>Visual Comparison</h2>
+          <h2>Qualitative Results</h2>
           <p class="section-lead">
-            Select a scene and click a thumbnail to switch results. Use “Blink Inputs” to reveal
-            the motion between the two exposure moments.
+            Click an example to inspect the exposure inputs, full-resolution result, and local
+            comparisons with representative HDR and exposure-fusion methods.
           </p>
-
-          <div class="comparison-controls">
-            <label>
-              Dataset:
-              <select id="dataset-select" disabled>
-                <option>Paper examples</option>
-              </select>
-            </label>
-            <label>
-              Scene:
-              <select id="scene-select">
-                <option value="dancer">Dancer</option>
-                <option value="store">Indoor motion</option>
-              </select>
-            </label>
-            <button class="blink-button" id="blink-button" type="button">Blink Inputs</button>
-          </div>
-
-          <div class="comparison-viewer">
-            <img
-              id="comparison-image"
-              src="static/images/dancer-ours.webp"
-              alt="SwiftFusion visual comparison"
-            />
-          </div>
-          <p class="comparison-status" id="comparison-status" aria-live="polite">
-            Dancer · SwiftFusion (Ours)
-          </p>
-
-          <div class="method-buttons" id="method-buttons" aria-label="Comparison methods"></div>
-          <p class="keyboard-tip">Keyboard: press 1, 2, or 3 to switch results.</p>
+          <div class="scene-gallery" id="scene-gallery"></div>
         </div>
       </section>
 
@@ -179,6 +149,55 @@
         </p>
       </div>
     </footer>
+
+    <div class="result-lightbox" id="result-lightbox" hidden>
+      <button class="lightbox-backdrop" type="button" aria-label="Close result viewer"></button>
+      <section
+        class="lightbox-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="lightbox-title"
+      >
+        <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close">×</button>
+        <header class="lightbox-header">
+          <h3 id="lightbox-title"></h3>
+          <p id="lightbox-description"></p>
+        </header>
+
+        <div class="full-result">
+          <div class="full-image-frame">
+            <img id="full-result-image" alt="" />
+            <span class="region-box" id="region-box" aria-hidden="true"></span>
+          </div>
+          <div class="full-switches" id="full-switches" aria-label="Full image view"></div>
+        </div>
+
+        <div class="patch-section">
+          <div class="patch-heading">
+            <div>
+              <h4>Local Detail Comparison</h4>
+              <p>Select a method, then drag the slider to compare it with SwiftFusion.</p>
+            </div>
+            <div class="region-tabs" id="region-tabs" aria-label="Detail region"></div>
+          </div>
+
+          <div class="patch-compare" id="patch-compare">
+            <img class="patch-layer" id="patch-base" alt="" />
+            <img class="patch-layer patch-ours" id="patch-ours" alt="" />
+            <span class="patch-label patch-label-left">Ours</span>
+            <span class="patch-label patch-label-right" id="patch-method-label"></span>
+            <span class="patch-divider" id="patch-divider" aria-hidden="true"></span>
+          </div>
+
+          <label class="patch-slider-label" for="patch-slider">
+            <span id="slider-method-label"></span>
+            <input id="patch-slider" type="range" min="0" max="100" value="50" />
+            <span>Ours</span>
+          </label>
+          <div class="patch-methods" id="patch-methods" aria-label="Patch comparison methods"></div>
+        </div>
+      </section>
+    </div>
 
     <script src="static/js/index.js"></script>
   </body>
