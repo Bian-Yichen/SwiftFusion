@@ -167,6 +167,22 @@ h2 {
   border-radius: 4px;
 }
 
+.video-frame {
+  width: min(100%, 960px);
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #111;
+  border-radius: 5px;
+  box-shadow: 0 12px 30px rgb(0 0 0 / 0.1);
+}
+
+.video-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 .comparison-section {
   background: #fff;
 }
@@ -268,18 +284,37 @@ h2 {
 .stage-open {
   position: absolute;
   z-index: 3;
-  top: 14px;
+  top: auto;
   right: 14px;
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
+  bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
   color: #222;
-  background: rgb(255 255 255 / 0.9);
-  border-radius: 50%;
-  font-size: 21px;
+  background: rgb(255 255 255 / 0.92);
+  border: 1px solid rgb(255 255 255 / 0.7);
+  border-radius: 4px;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 0.13);
+  font-size: 12px;
   line-height: 1;
+  opacity: 0.9;
   pointer-events: none;
+  transform: translateY(0);
+  transition:
+    opacity 260ms ease,
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stage-open strong {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.exposure-stage-button:hover .stage-open,
+.exposure-stage-button:focus-visible .stage-open {
+  opacity: 1;
+  transform: translateY(-2px);
 }
 
 .exposure-controls {
@@ -379,6 +414,31 @@ h2 {
 
 .scene-thumbnail.active .thumbnail-ours {
   clip-path: inset(0);
+}
+
+.thumbnail-open-cue {
+  position: absolute;
+  z-index: 3;
+  right: 7px;
+  bottom: 7px;
+  padding: 4px 6px;
+  color: #fff;
+  background: rgb(0 0 0 / 0.66);
+  border-radius: 3px;
+  font-size: 10px;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(5px);
+  transition:
+    opacity 220ms ease,
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scene-thumbnail:hover .thumbnail-open-cue,
+.scene-thumbnail:focus-visible .thumbnail-open-cue {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .result-lightbox {
@@ -578,13 +638,9 @@ h2 {
 }
 
 .patch-slider-label {
-  display: grid;
-  grid-template-columns: minmax(90px, 1fr) minmax(160px, 2fr) minmax(90px, 1fr);
-  align-items: center;
-  gap: 10px;
+  display: block;
+  width: min(360px, 100%);
   margin: 12px auto 18px;
-  font-size: 13px;
-  text-align: center;
 }
 
 .patch-slider-label input {
@@ -704,9 +760,6 @@ footer {
     justify-content: flex-start;
   }
 
-  .patch-slider-label {
-    grid-template-columns: 72px minmax(120px, 1fr) 72px;
-  }
 }
 
 @media (hover: none), (max-width: 760px) {

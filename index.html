@@ -50,6 +50,9 @@
             <a class="button" href="https://github.com/Bian-Yichen/SwiftFusion" target="_blank" rel="noreferrer">
               <span aria-hidden="true">⌘</span> Code
             </a>
+            <a class="button" href="https://youtu.be/GZSuvyfqWgA" target="_blank" rel="noreferrer">
+              <span aria-hidden="true">▶</span> Video
+            </a>
           </div>
         </div>
       </section>
@@ -93,6 +96,22 @@
               image in only 2.2 seconds, achieving a 198× inference speedup compared with
               existing generative HDR approaches.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="video">
+        <div class="container">
+          <h2>Video</h2>
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/GZSuvyfqWgA"
+              title="SwiftFusion video"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
           </div>
         </div>
       </section>
@@ -189,10 +208,8 @@
             <span class="patch-divider" id="patch-divider" aria-hidden="true"></span>
           </div>
 
-          <label class="patch-slider-label" for="patch-slider">
-            <span id="slider-method-label"></span>
+          <label class="patch-slider-label" for="patch-slider" aria-label="Comparison slider">
             <input id="patch-slider" type="range" min="0" max="100" value="50" />
-            <span>Ours</span>
           </label>
           <div class="patch-methods" id="patch-methods" aria-label="Patch comparison methods"></div>
         </div>

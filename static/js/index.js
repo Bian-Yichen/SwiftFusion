@@ -166,7 +166,6 @@ const regionTabs = document.getElementById("region-tabs");
 const patchBase = document.getElementById("patch-base");
 const patchOurs = document.getElementById("patch-ours");
 const patchMethodLabel = document.getElementById("patch-method-label");
-const sliderMethodLabel = document.getElementById("slider-method-label");
 const patchSlider = document.getElementById("patch-slider");
 const patchDivider = document.getElementById("patch-divider");
 const patchMethods = document.getElementById("patch-methods");
@@ -256,7 +255,9 @@ function renderGallery() {
           <span class="exposure-scan" aria-hidden="true"></span>
         </span>
         <span class="exposure-view-label">${fullViewLabels.ours}</span>
-        <span class="stage-open" aria-hidden="true">+</span>
+        <span class="stage-open" aria-hidden="true">
+          <span>Inspect details</span><strong>↗</strong>
+        </span>
       </button>
       <div class="exposure-controls" aria-label="Exposure preview">
         <button class="exposure-button" type="button" data-view="under" aria-pressed="false">UE</button>
@@ -304,6 +305,7 @@ function renderGallery() {
         <img class="thumbnail-layer thumbnail-ours" src="${fullAsset(scene, "ours")}" alt="" loading="lazy" />
         <img class="thumbnail-layer thumbnail-over" src="${fullAsset(scene, "over")}" alt="" loading="lazy" />
       </span>
+      <span class="thumbnail-open-cue" aria-hidden="true">View details ↗</span>
     `;
     button.addEventListener("pointerenter", () => setGalleryScene(scene, button));
     button.addEventListener("focus", () => setGalleryScene(scene, button));
@@ -364,7 +366,6 @@ function selectPatchMethod(method) {
   patchOurs.src = patchAsset(activeScene, activeRegionIndex, "ours");
   patchOurs.alt = `${activeScene.title} · ${region.label} · SwiftFusion (Ours)`;
   patchMethodLabel.textContent = selectedLabel;
-  sliderMethodLabel.textContent = selectedLabel;
   patchMethods.querySelectorAll(".patch-method-button").forEach((button) => {
     button.classList.toggle("active", button.dataset.method === method);
   });
