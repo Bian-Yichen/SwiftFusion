@@ -1,0 +1,10 @@
+[
+  {
+    "gt": "samples/scene_000/gt.png",
+    "video": [
+      "samples/scene_000/oe.png",
+      "samples/scene_000/ue.png"
+    ],
+    "prompt": "Perform exposure fusion using overexposed reference image (Figure 1) and underexposed complementary image (Figure 2). Use the overexposed image as the primary reference for geometry and appearance. Recover the lost details in overexposed regions by selectively integrating valid information from the underexposed image. All other regions should remain consistent with the overexposed reference without altering its structure. Handle both global and local misalignment and motion carefully to avoid ghosting artifacts or distortions, especially in occluded or moving regions. Maintain realistic textures, more details, and beautiful tone across the final output."
+  }
+]
