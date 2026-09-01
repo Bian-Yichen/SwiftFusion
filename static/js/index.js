@@ -265,6 +265,11 @@ function renderGallery() {
         <button class="exposure-button" type="button" data-view="over" aria-pressed="false">OE</button>
       </div>
     </div>
+    <p class="scene-browser-hint">
+      <span aria-hidden="true">↓</span>
+      Hover a thumbnail to preview.
+      <strong>Click it to inspect full-resolution details.</strong>
+    </p>
     <div class="scene-filmstrip" aria-label="Result scenes"></div>
   `;
 
@@ -305,7 +310,10 @@ function renderGallery() {
         <img class="thumbnail-layer thumbnail-ours" src="${fullAsset(scene, "ours")}" alt="" loading="lazy" />
         <img class="thumbnail-layer thumbnail-over" src="${fullAsset(scene, "over")}" alt="" loading="lazy" />
       </span>
-      <span class="thumbnail-open-cue" aria-hidden="true">View details ↗</span>
+      <span class="thumbnail-open-cue" aria-hidden="true">
+        <strong>Click to inspect</strong>
+        <small>Full image + patch comparisons</small>
+      </span>
     `;
     button.addEventListener("pointerenter", () => setGalleryScene(scene, button));
     button.addEventListener("focus", () => setGalleryScene(scene, button));

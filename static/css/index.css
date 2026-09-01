@@ -347,11 +347,33 @@ h2 {
   background: #333;
 }
 
+.scene-browser-hint {
+  margin: 24px 0 10px;
+  color: #555;
+  font-size: 13px;
+  text-align: center;
+}
+
+.scene-browser-hint span {
+  display: inline-grid;
+  width: 21px;
+  height: 21px;
+  margin-right: 5px;
+  place-items: center;
+  color: #fff;
+  background: #333;
+  border-radius: 50%;
+}
+
+.scene-browser-hint strong {
+  color: #222;
+}
+
 .scene-filmstrip {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 9px;
-  margin-top: 24px;
+  margin-top: 0;
 }
 
 .scene-thumbnail {
@@ -368,6 +390,26 @@ h2 {
     border-color 260ms ease,
     opacity 260ms ease,
     transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scene-thumbnail::after {
+  position: absolute;
+  z-index: 2;
+  top: 6px;
+  right: 6px;
+  display: grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  color: #222;
+  background: rgb(255 255 255 / 0.92);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.16);
+  content: "↗";
+  font-size: 12px;
+  line-height: 1;
+  pointer-events: none;
+  transition: opacity 180ms ease;
 }
 
 .scene-thumbnail:hover,
@@ -419,26 +461,48 @@ h2 {
 .thumbnail-open-cue {
   position: absolute;
   z-index: 3;
-  right: 7px;
-  bottom: 7px;
-  padding: 4px 6px;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
   color: #fff;
-  background: rgb(0 0 0 / 0.66);
-  border-radius: 3px;
-  font-size: 10px;
-  line-height: 1;
+  background: rgb(0 0 0 / 0.58);
+  font-size: 12px;
+  line-height: 1.2;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(5px);
+  transform: scale(0.96);
   transition:
     opacity 220ms ease,
     transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.thumbnail-open-cue strong {
+  padding: 5px 8px;
+  background: #fff;
+  border-radius: 3px;
+  color: #222;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.thumbnail-open-cue small {
+  margin-top: 6px;
+  color: rgb(255 255 255 / 0.9);
+  font-size: 9px;
+}
+
 .scene-thumbnail:hover .thumbnail-open-cue,
 .scene-thumbnail:focus-visible .thumbnail-open-cue {
   opacity: 1;
-  transform: translateY(0);
+  transform: scale(1);
+}
+
+.scene-thumbnail:hover::after,
+.scene-thumbnail:focus-visible::after {
+  opacity: 0;
 }
 
 .result-lightbox {
@@ -782,7 +846,7 @@ footer {
     grid-auto-flow: column;
     grid-template-columns: none;
     gap: 8px;
-    margin-top: 20px;
+    margin-top: 0;
     padding: 3px 2px 10px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
